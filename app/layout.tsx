@@ -5,6 +5,7 @@ import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { Toaster } from "sonner";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,11 +43,12 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="jotion-theme-2"
         >
-          
           <ConvexClientProvider>
-            <ModalProvider />
-            <Toaster position="bottom-center" />
-            {children}
+            <EdgeStoreProvider>
+              <ModalProvider />
+              <Toaster position="bottom-center" />
+              {children}
+            </EdgeStoreProvider>
           </ConvexClientProvider>
         </ThemeProvider>
       </body>
